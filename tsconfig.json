@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "x-formly": [
+        "dist/x-formly"
+      ],
+      "x-formly/*": [
+        "dist/x-formly/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
