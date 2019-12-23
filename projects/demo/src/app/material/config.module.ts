@@ -33,7 +33,7 @@ import { ToggleAppComponent, ToggleExampleConfig } from './toggle';
     XFormlyModule,
     RouterModule.forChild([
       {
-        path: 'demo',
+        path: '',
         component: ExamplesRouterViewerComponent,
         data: {
           debugFields,
