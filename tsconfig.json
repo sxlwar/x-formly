@@ -8,7 +8,9 @@
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "paths": {
-      "x-formly": ["projects/x-formly/src/public-api"]
+      "x-formly": ["projects/x-formly/src/public-api"],
+      "@assets/*": ["projects/demo/src/assets/*"]
     }
-  }
+  },
+  "exclude": ["projects/demo/src/assets/stackblitz/**/*.ts", "src/test.ts", "src/**/*.spec.ts"]
 }

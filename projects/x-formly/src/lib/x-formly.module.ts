@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -13,6 +14,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { FormlyModule } from '@ngx-formly/core';
 import { FormlySelectModule } from '@ngx-formly/core/select';
 
+import { FormlyFieldAutoComplete } from './autocomplete/autocomplete.type';
 import { FormlyFieldCheckbox } from './checkbox/checkbox.type';
 import { FormlyFieldDatepicker } from './datepicker/datepicker.type';
 import { FormlyWrapperFormField } from './form-field/form-field.wrapper';
@@ -34,12 +36,14 @@ import { xFormlyConfig } from './x-formly.config';
     MatInputModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatAutocompleteModule,
     FormlySelectModule,
     MatRadioModule,
     MatPseudoCheckboxModule,
     MatSliderModule,
     MatSlideToggleModule,
     MatSelectModule,
+    MatAutocompleteModule,
     FormlyModule.forChild(xFormlyConfig),
   ],
   declarations: [
@@ -54,6 +58,7 @@ import { xFormlyConfig } from './x-formly.config';
     FormlyFieldTextArea,
     FormlyFieldToggle,
     FormlyFieldSelect,
+    FormlyFieldAutoComplete,
   ],
 })
 export class XFormlyModule {}

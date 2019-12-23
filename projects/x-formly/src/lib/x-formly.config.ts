@@ -1,5 +1,6 @@
 import { ConfigOption } from '@ngx-formly/core';
 
+import { FormlyFieldAutoComplete } from './autocomplete/autocomplete.type';
 import { FormlyFieldCheckbox } from './checkbox/checkbox.type';
 import { FormlyFieldDatepicker } from './datepicker/datepicker.type';
 import { FormlyWrapperFormField } from './form-field/form-field.wrapper';
@@ -7,11 +8,13 @@ import { FormlyFieldInput } from './input/input.type';
 import { FormlyFieldMultiCheckbox } from './multicheckbox/multicheckbox.type';
 import { FormlyFieldNativeSelect } from './native-select/native-select.type';
 import { FormlyFieldRadio } from './radio/radio.type';
+import { FormlyFieldSelect } from './select/select.type';
 import { FormlyFieldSlider } from './slider/slider.type';
 import { FormlyFieldTextArea } from './textarea/textarea.type';
 import { FormlyFieldToggle } from './toggle/toggle.type';
 
 export enum X_FORMLY_TYPES {
+  AUTOCOMPLETE = 'autocomplete',
   CHECKBOX = 'checkbox',
   DATEPICKER = 'datepicker',
   INPUT = 'input',
@@ -29,6 +32,11 @@ export enum X_FORMLY_WRAPPERS {
 }
 export const xFormlyConfig: ConfigOption = {
   types: [
+    {
+      name: X_FORMLY_TYPES.AUTOCOMPLETE,
+      component: FormlyFieldAutoComplete,
+      wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
+    },
     {
       name: X_FORMLY_TYPES.CHECKBOX,
       component: FormlyFieldCheckbox,
@@ -72,6 +80,11 @@ export const xFormlyConfig: ConfigOption = {
     {
       name: X_FORMLY_TYPES.TOGGLE,
       component: FormlyFieldToggle,
+      wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
+    },
+    {
+      name: X_FORMLY_TYPES.SELECT,
+      component: FormlyFieldSelect,
       wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
     },
   ],
