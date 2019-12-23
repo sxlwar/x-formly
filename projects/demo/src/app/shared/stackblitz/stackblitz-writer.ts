@@ -39,6 +39,10 @@ const dependencies = {
   },
 };
 
+const componentName = 'AppComponent';
+const importStatement = `import { AppComponent } from './app.component';`;
+const importDateStatement = `import { MatNativeDateModule } from '@angular/material/core';`;
+
 /**
  * Stackblitz writer, write example files to stackblitz
  *
@@ -152,10 +156,17 @@ export class StackblitzWriter {
   }
 
   _replaceExamplePlaceholderNames(fileName: string, filecontent: string, options): string {
+    const isDatepicker = options.name.indexOf('Datepicker') !== -1;
     if (fileName === 'app.module.ts') {
-      filecontent = filecontent.replace(`/*import*/`, `import { AppComponent } from './app.component';`);
-      filecontent = filecontent.replace(`/*declarations*/`, 'AppComponent');
-      filecontent = filecontent.replace(`/*entryComponents*/`, 'AppComponent');
+      filecontent = filecontent.replace(
+        `/*import*/`,
+        isDatepicker ? `${importDateStatement}\n${importStatement}` : importStatement,
+      );
+      filecontent = filecontent.replace(`/*declarations*/`, componentName);
+      filecontent = filecontent.replace(`/*entryComponents*/`, componentName);
+      filecontent = filecontent.replace(`/*bootstrap*/`, componentName);
+
+      filecontent = filecontent.replace('/*module*/', isDatepicker ? `MatNativeDateModule,` : '');
     } else if (fileName === 'styles.scss') {
       filecontent = `${filecontent}\nbody { padding: 10px; }`;
     }

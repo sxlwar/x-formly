@@ -10,6 +10,7 @@ import { XFormlyModule } from 'x-formly';
   imports: [
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    /*module*/
     XFormlyModule,
     FormlyModule.forRoot({
       validationMessages: [
@@ -25,6 +26,9 @@ import { XFormlyModule } from 'x-formly';
   ],
   entryComponents: [
     /*entryComponents*/
+  ],
+  bootstrap: [
+    /*bootstrap*/
   ],
 })
 export class AppModule {}
