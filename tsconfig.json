@@ -1,34 +1,14 @@
 {
-  "compileOnSave": false,
+  "extends": "xal-config/tsconfig/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
+    "types": ["jest", "node"],
+    "typeRoots": ["node_modules/@types"],
     "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
     "paths": {
-      "x-formly": [
-        "dist/x-formly"
-      ],
-      "x-formly/*": [
-        "dist/x-formly/*"
-      ]
+      "x-formly": ["projects/x-formly/src/public-api"]
     }
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
   }
 }

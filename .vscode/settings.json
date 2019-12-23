@@ -1,0 +1,6 @@
+{
+  "prettier.configPath": "./.prettier.config.js",
+  "editor.formatOnSave": true,
+  "typescriptHero.imports.organizeOnSave": true,
+  "prettier.trailingComma": "all"
+}
