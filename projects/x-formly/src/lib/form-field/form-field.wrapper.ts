@@ -24,7 +24,6 @@ interface MatFormlyFieldConfig extends FormlyFieldConfig {
   _componentFactory: any;
 }
 
-
 @Component({
   selector: 'formly-wrapper-mat-form-field',
   template: `
@@ -34,7 +33,8 @@ interface MatFormlyFieldConfig extends FormlyFieldConfig {
       [floatLabel]="to.floatLabel"
       [appearance]="to.appearance"
       [color]="to.color"
-      [style.width]="'100%'">
+      [style.width]="'100%'"
+    >
       <ng-container #fieldComponent></ng-container>
       <mat-label *ngIf="to.label && to.hideLabel !== true">
         {{ to.label }}
@@ -59,22 +59,19 @@ interface MatFormlyFieldConfig extends FormlyFieldConfig {
   `,
   providers: [{ provide: MatFormFieldControl, useExisting: FormlyWrapperFormField }],
 })
-export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig> implements OnInit, OnDestroy, MatFormFieldControl<any>, AfterViewInit, AfterContentChecked {
+export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig>
+  implements OnInit, OnDestroy, MatFormFieldControl<any>, AfterViewInit, AfterContentChecked {
   // TODO: remove `any`, once dropping angular `V7` support.
   @ViewChild('fieldComponent', <any>{ read: ViewContainerRef, static: true }) fieldComponent!: ViewContainerRef;
 
   // TODO: remove `any`, once dropping angular `V7` support.
-  @ViewChild(MatFormField, <any> { static: true }) formField!: MatFormField;
+  @ViewChild(MatFormField, <any>{ static: true }) formField!: MatFormField;
 
   stateChanges = new Subject<void>();
   _errorState = false;
   private initialGapCalculated = false;
 
-  constructor(
-    private renderer: Renderer2,
-    private elementRef: ElementRef,
-    private focusMonitor: FocusMonitor,
-  ) {
+  constructor(private renderer: Renderer2, private elementRef: ElementRef, private focusMonitor: FocusMonitor) {
     super();
   }
 
@@ -84,7 +81,9 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig> i
 
     const fieldComponent = this.formlyField['_componentFactory'];
     if (fieldComponent && !(fieldComponent.componentRef.instance instanceof FieldType)) {
-      console.warn(`Component '${fieldComponent.component.prototype.constructor.name}' must extend 'FieldType' from 'x-formly'.`);
+      console.warn(
+        `Component '${fieldComponent.component.prototype.constructor.name}' must extend 'FieldType' from 'x-formly'.`
+      );
     }
 
     // fix for https://github.com/angular/material2/issues/11437
@@ -124,7 +123,7 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig> i
     this.focusMonitor.stopMonitoring(this.elementRef);
   }
 
-  setDescribedByIds(ids: string[]): void { }
+  setDescribedByIds(ids: string[]): void {}
   onContainerClick(event: MouseEvent): void {
     this.formlyField.focus = true;
     this.stateChanges.next();
@@ -139,16 +138,38 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig> i
 
     return showError;
   }
-  get controlType() { return this.to.type; }
-  get focused() { return !!this.formlyField.focus && !this.disabled; }
-  get disabled() { return !!this.to.disabled; }
-  get required() { return !!this.to.required; }
-  get placeholder() { return this.to.placeholder || ''; }
-  get shouldPlaceholderFloat() { return this.shouldLabelFloat; }
-  get value() { return this.formControl.value; }
-  get ngControl() { return this.formControl as any; }
-  get empty() { return !this.formControl.value; }
-  get shouldLabelFloat() { return this.focused || !this.empty; }
+  get controlType() {
+    return this.to.type;
+  }
+  get focused() {
+    return !!this.formlyField.focus && !this.disabled;
+  }
+  get disabled() {
+    return !!this.to.disabled;
+  }
+  get required() {
+    return !!this.to.required;
+  }
+  get placeholder() {
+    return this.to.placeholder || '';
+  }
+  get shouldPlaceholderFloat() {
+    return this.shouldLabelFloat;
+  }
+  get value() {
+    return this.formControl.value;
+  }
+  get ngControl() {
+    return this.formControl as any;
+  }
+  get empty() {
+    return !this.formControl.value;
+  }
+  get shouldLabelFloat() {
+    return this.focused || !this.empty;
+  }
 
-  get formlyField() { return this.field as MatFormlyFieldConfig; }
+  get formlyField() {
+    return this.field as MatFormlyFieldConfig;
+  }
 }

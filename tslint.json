@@ -1,29 +1,9 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer"
-  ],
+  "rulesDirectory": ["node_modules/codelyzer"],
   "rules": {
-    "directive-selector": [
-      true,
-      "attribute",
-      "formly",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      "formly",
-      "kebab-case"
-    ],
-    "use-input-property-decorator": true,
-    "use-output-property-decorator": true,
+    "directive-selector": [true, "attribute", "formly", "camelCase"],
+    "component-selector": [true, "element", "formly", "kebab-case"],
     "use-host-property-decorator": false,
-    "no-attribute-parameter-decorator": true,
-    "angular-whitespace": [
-      true,
-      "check-interpolation",
-      "check-pipe"
-    ],
     "no-input-rename": false,
     "no-output-rename": true,
     "no-forward-ref": true,
@@ -33,22 +13,10 @@
     "directive-class-suffix": false,
     "import-destructuring-spacing": true,
     "class-name": true,
-    "comment-format": [
-      true,
-      "check-space"
-    ],
-    "indent": [
-      true,
-      "spaces"
-    ],
+    "comment-format": [true, "check-space"],
+    "indent": [true, "spaces"],
     "member-access": false,
-    "member-ordering": [
-      true,
-      "public-before-private",
-      "static-before-instance",
-      "variables-before-functions"
-    ],
-    "no-unused-variable": true,
+    "member-ordering": [true, "public-before-private", "static-before-instance", "variables-before-functions"],
     "no-duplicate-variable": true,
     "no-eval": true,
     "no-internal-module": true,
@@ -56,28 +24,20 @@
     "trailing-comma": [
       true,
       {
-        "multiline": "always",
+        "multiline": {
+          "objects": "always",
+          "arrays": "always",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        },
         "singleline": "never"
       }
     ],
     "no-var-keyword": true,
-    "one-line": [
-      true,
-      "check-open-brace",
-      "check-whitespace"
-    ],
-    "quotemark": [
-      true,
-      "single"
-    ],
-    "semicolon": [
-      true,
-      "always"
-    ],
-    "triple-equals": [
-      true,
-      "allow-null-check"
-    ],
+    "one-line": [true, "check-open-brace", "check-whitespace"],
+    "quotemark": [true, "single"],
+    "semicolon": [true, "always"],
+    "triple-equals": [true, "allow-null-check"],
     "typedef-whitespace": [
       true,
       {
@@ -88,17 +48,7 @@
         "variable-declaration": "nospace"
       }
     ],
-    "variable-name": [
-      true,
-      "ban-keywords"
-    ],
-    "whitespace": [
-      true,
-      "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-separator",
-      "check-type"
-    ]
+    "variable-name": [true, "ban-keywords"],
+    "whitespace": [true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type"]
   }
 }
