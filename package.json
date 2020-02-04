@@ -1,13 +1,14 @@
 {
   "name": "x-formly",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve demo --open",
-    "format": "prettier --config .prettier.config.js projects/**/src/**/*.ts --write",
     "build": "ng build",
-    "lint": "ng lint",
     "e2e": "ng e2e",
+    "format": "prettier --config .prettier.config.js projects/**/src/**/*.ts --write",
+    "lint": "ng lint",
+    "ng": "ng",
+    "release": "standard-version",
+    "start": "ng serve demo --open",
     "stylelint": "stylelint \"projects/**/*.scss\" --config .stylelint.config.js"
   },
   "private": true,
@@ -34,6 +35,7 @@
     "bootstrap": "^4.3.1",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
+    "standard-version": "^7.1.0",
     "tslib": "^1.10.0",
     "x-material": "0.0.1",
     "zone.js": "~0.9.1"
