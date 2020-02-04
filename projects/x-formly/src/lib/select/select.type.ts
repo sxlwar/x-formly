@@ -47,14 +47,16 @@ import { FieldType } from '../form-field/field.type';
   `,
 })
 export class FormlyFieldSelect extends FieldType {
-  @ViewChild(MatSelect, <any>{ static: true }) formFieldControl!: MatSelect;
+  @ViewChild(MatSelect, { static: true }) formFieldControl!: MatSelect;
 
   defaultOptions = {
     templateOptions: { options: [] },
   };
 
+  // tslint:disable-next-line:no-any
   private selectAllValue!: { options: any; value: any[] };
 
+  // tslint:disable-next-line:no-any
   getSelectAllState(options: any[]) {
     if (this.empty || this.value.length === 0) {
       return '';
@@ -63,6 +65,7 @@ export class FormlyFieldSelect extends FieldType {
     return this.value.length !== this.getSelectAllValue(options).length ? 'indeterminate' : 'checked';
   }
 
+  // tslint:disable-next-line:no-any
   toggleSelectAll(options: any[]) {
     const selectAllValue = this.getSelectAllValue(options);
     this.formControl.setValue(!this.value || this.value.length !== selectAllValue.length ? selectAllValue : []);
@@ -74,7 +77,8 @@ export class FormlyFieldSelect extends FieldType {
     }
   }
 
-  compareWith(o1: any, o2: any) {
+  // tslint:disable-next-line:no-any
+  compareWith(o1: any, o2: any): boolean {
     return o1 === o2;
   }
 
@@ -90,9 +94,12 @@ export class FormlyFieldSelect extends FieldType {
     return null;
   }
 
+  // tslint:disable-next-line:no-any
   private getSelectAllValue(options: any[]) {
     if (!this.selectAllValue || options !== this.selectAllValue.options) {
+      // tslint:disable-next-line:no-any
       const flatOptions: any[] = [];
+
       options.forEach(o => (o.group ? flatOptions.push(...o.group) : flatOptions.push(o)));
 
       this.selectAllValue = {

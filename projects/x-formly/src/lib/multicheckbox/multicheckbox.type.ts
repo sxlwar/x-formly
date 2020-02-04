@@ -35,6 +35,7 @@ export class FormlyFieldMultiCheckbox extends FieldType {
     },
   };
 
+  // tslint:disable-next-line:no-any
   onChange(value: any, checked: boolean) {
     if (this.to.type === 'array') {
       this.formControl.patchValue(
@@ -45,6 +46,7 @@ export class FormlyFieldMultiCheckbox extends FieldType {
     } else {
       this.formControl.patchValue({ ...this.formControl.value, [value]: checked });
     }
+
     this.formControl.markAsTouched();
   }
 
@@ -52,6 +54,7 @@ export class FormlyFieldMultiCheckbox extends FieldType {
     if (this.checkboxes.length) {
       this.checkboxes.first.focus();
     }
+
     super.onContainerClick(event);
   }
 }

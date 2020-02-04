@@ -3,11 +3,11 @@ import { MatInput } from '@angular/material/input';
 
 import { FieldType } from '../form-field/field.type';
 
-
 @Component({
   selector: 'formly-field-mat-input',
   template: `
-    <input *ngIf="type !== 'number'; else numberTmp"
+    <input
+      *ngIf="type !== 'number'; else numberTmp"
       matInput
       [id]="id"
       [readonly]="to.readonly"
@@ -16,22 +16,25 @@ import { FieldType } from '../form-field/field.type';
       [formControl]="formControl"
       [formlyAttributes]="field"
       [tabindex]="to.tabindex || 0"
-      [placeholder]="to.placeholder">
+      [placeholder]="to.placeholder"
+    />
     <ng-template #numberTmp>
-      <input matInput
-             [id]="id"
-             type="number"
-             [readonly]="to.readonly"
-             [errorStateMatcher]="errorStateMatcher"
-             [formControl]="formControl"
-             [formlyAttributes]="field"
-             [tabindex]="to.tabindex || 0"
-             [placeholder]="to.placeholder">
+      <input
+        matInput
+        [id]="id"
+        type="number"
+        [readonly]="to.readonly"
+        [errorStateMatcher]="errorStateMatcher"
+        [formControl]="formControl"
+        [formlyAttributes]="field"
+        [tabindex]="to.tabindex || 0"
+        [placeholder]="to.placeholder"
+      />
     </ng-template>
   `,
 })
 export class FormlyFieldInput extends FieldType implements OnInit {
-  @ViewChild(MatInput, <any> { static: true }) formFieldControl!: MatInput;
+  @ViewChild(MatInput, { static: true }) formFieldControl!: MatInput;
 
   get type() {
     return this.to.type || 'text';

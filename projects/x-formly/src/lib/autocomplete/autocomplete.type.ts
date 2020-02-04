@@ -26,12 +26,15 @@ import { FieldType } from '../form-field/field.type';
 })
 export class FormlyFieldAutoComplete extends FieldType implements OnInit, AfterViewInit {
   @ViewChild(MatInput, { static: true }) formFieldControl: MatInput;
+
   @ViewChild(MatAutocompleteTrigger, { static: false }) autocomplete: MatAutocompleteTrigger;
 
+  // tslint:disable-next-line:no-any
   filter: Observable<any>;
 
   ngOnInit() {
     super.ngOnInit();
+
     this.filter = this.formControl.valueChanges.pipe(
       startWith(''),
       switchMap(term => this.to.filter(term))
@@ -41,6 +44,7 @@ export class FormlyFieldAutoComplete extends FieldType implements OnInit, AfterV
   ngAfterViewInit() {
     super.ngAfterViewInit();
     // temporary fix for https://github.com/angular/material2/issues/6728
+    // tslint:disable-next-line
     (<any>this.autocomplete)._formField = this.formField;
   }
 }

@@ -18,9 +18,12 @@ import { Subject } from 'rxjs';
 import { FieldType } from './field.type';
 
 interface MatFormlyFieldConfig extends FormlyFieldConfig {
+  // tslint:disable-next-line
   _matprefix: TemplateRef<any>;
+  // tslint:disable-next-line
   _matsuffix: TemplateRef<any>;
   __formField__: FormlyWrapperFormField;
+  // tslint:disable-next-line
   _componentFactory: any;
 }
 
@@ -60,15 +63,16 @@ interface MatFormlyFieldConfig extends FormlyFieldConfig {
   providers: [{ provide: MatFormFieldControl, useExisting: FormlyWrapperFormField }],
 })
 export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig>
-  implements OnInit, OnDestroy, MatFormFieldControl<any>, AfterViewInit, AfterContentChecked {
-  // TODO: remove `any`, once dropping angular `V7` support.
-  @ViewChild('fieldComponent', <any>{ read: ViewContainerRef, static: true }) fieldComponent!: ViewContainerRef;
+  implements OnInit, OnDestroy, /* tslint:disable */ MatFormFieldControl<any>, AfterViewInit, AfterContentChecked {
+  @ViewChild('fieldComponent', { read: ViewContainerRef, static: true }) fieldComponent!: ViewContainerRef;
 
-  // TODO: remove `any`, once dropping angular `V7` support.
-  @ViewChild(MatFormField, <any>{ static: true }) formField!: MatFormField;
+  @ViewChild(MatFormField, { static: true }) formField!: MatFormField;
 
   stateChanges = new Subject<void>();
+
+  // tslint:disable-next-line
   _errorState = false;
+
   private initialGapCalculated = false;
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef, private focusMonitor: FocusMonitor) {
@@ -77,9 +81,13 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig>
 
   ngOnInit() {
     this.formField._control = this;
+
+    // tslint:disable-next-line
     defineHiddenProp(this.field, '__formField__', this.formField);
 
+    // tslint:disable-next-line
     const fieldComponent = this.formlyField['_componentFactory'];
+
     if (fieldComponent && !(fieldComponent.componentRef.instance instanceof FieldType)) {
       console.warn(
         `Component '${fieldComponent.component.prototype.constructor.name}' must extend 'FieldType' from 'x-formly'.`
@@ -106,6 +114,7 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig>
     }
 
     this.formField.updateOutlineGap();
+
     this.initialGapCalculated = true;
   }
 
@@ -113,7 +122,10 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig>
     // temporary fix for https://github.com/angular/material2/issues/7891
     if (this.formField.appearance !== 'outline' && this.to.hideFieldUnderline === true) {
       const underlineElement = this.formField._elementRef.nativeElement.querySelector('.mat-form-field-underline');
-      underlineElement && this.renderer.removeChild(underlineElement.parentNode, underlineElement);
+
+      if (underlineElement) {
+        this.renderer.removeChild(underlineElement.parentNode, underlineElement);
+      }
     }
   }
 
@@ -124,6 +136,7 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig>
   }
 
   setDescribedByIds(ids: string[]): void {}
+
   onContainerClick(event: MouseEvent): void {
     this.formlyField.focus = true;
     this.stateChanges.next();
@@ -131,6 +144,7 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig>
 
   get errorState() {
     const showError = this.options!.showError!(this);
+
     if (showError !== this._errorState) {
       this._errorState = showError;
       this.stateChanges.next();
@@ -138,33 +152,44 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig>
 
     return showError;
   }
+
   get controlType() {
     return this.to.type;
   }
+
   get focused() {
     return !!this.formlyField.focus && !this.disabled;
   }
+
   get disabled() {
     return !!this.to.disabled;
   }
+
   get required() {
     return !!this.to.required;
   }
+
   get placeholder() {
     return this.to.placeholder || '';
   }
+
   get shouldPlaceholderFloat() {
     return this.shouldLabelFloat;
   }
+
   get value() {
     return this.formControl.value;
   }
+
   get ngControl() {
+    // tslint:disable-next-line:no-any
     return this.formControl as any;
   }
+
   get empty() {
     return !this.formControl.value;
   }
+
   get shouldLabelFloat() {
     return this.focused || !this.empty;
   }

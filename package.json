@@ -4,16 +4,16 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve demo --open",
-    "format": "prettier --config .prettier.config.js projects/x-formly/src/**/*.ts --write",
+    "format": "prettier --config .prettier.config.js projects/**/src/**/*.ts --write",
     "build": "ng build",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "stylelint": "stylelint \"projects/**/*.scss\" --config .stylelint.config.js"
   },
   "private": true,
   "husky": {
     "hooks": {
-      "pre-push": "ng lint",
-      "pre-commit": "pretty-quick --staged",
+      "pre-commit": "pretty-quick --staged && npm run stylelint && ng lint",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
@@ -31,11 +31,11 @@
     "@ngx-formly/core": "^5.5.7",
     "@ngx-loading-bar/core": "^4.2.0",
     "@ngx-loading-bar/router": "^4.2.0",
-    "@xal-tsconfig/tsconfig": "^1.0.0",
     "bootstrap": "^4.3.1",
     "hammerjs": "^2.0.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "x-material": "0.0.1",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
@@ -58,11 +58,16 @@
     "pretty-quick": "^2.0.1",
     "protractor": "~5.4.0",
     "raw-loader": "^1.0.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-prettier": "^1.1.2",
     "ts-node": "~7.0.0",
     "tsickle": "^0.37.0",
     "tslint": "~5.15.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.5.3",
-    "xal-config": "0.0.5"
+    "xal-config": "0.0.6"
   }
 }

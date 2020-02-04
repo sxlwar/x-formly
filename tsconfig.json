@@ -1,16 +1,14 @@
 {
-  "extends": "xal-config/tsconfig/tsconfig.json",
+  "extends": "xal-config/tsconfig",
   "compilerOptions": {
     "baseUrl": "./",
-    "types": ["jest", "node"],
-    "typeRoots": ["node_modules/@types"],
-    "experimentalDecorators": true,
-    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "paths": {
       "x-formly": ["projects/x-formly/src/public-api"],
       "@assets/*": ["projects/demo/src/assets/*"]
-    }
+    },
+    "types": ["jest", "node"]
   },
   "exclude": ["projects/demo/src/assets/stackblitz/**/*.ts", "src/test.ts", "src/**/*.spec.ts"]
 }

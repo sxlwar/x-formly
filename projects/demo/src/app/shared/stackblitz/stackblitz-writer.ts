@@ -74,9 +74,9 @@ export class StackblitzWriter {
     this._appendFormInput(form, 'private', 'true');
     this._appendFormInput(form, 'description', exampleData.title);
 
-    const componentName = exampleData.type;
-
-    const options: any = { type, name: componentName };
+    const compName = exampleData.type;
+    // tslint:disable-next-line:no-any
+    const options: any = { type, name: compName };
 
     options.includeMaterial = true;
     options.useAnimation = true;

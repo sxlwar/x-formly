@@ -7,11 +7,14 @@ import { FormlyWrapperFormField } from './form-field/form-field.wrapper';
 import { FormlyFieldInput } from './input/input.type';
 import { FormlyFieldMultiCheckbox } from './multicheckbox/multicheckbox.type';
 import { FormlyFieldNativeSelect } from './native-select/native-select.type';
+import { FormlyFieldPassword } from './password/password.type';
 import { FormlyFieldRadio } from './radio/radio.type';
 import { FormlyFieldSelect } from './select/select.type';
 import { FormlyFieldSlider } from './slider/slider.type';
 import { FormlyFieldTextArea } from './textarea/textarea.type';
 import { FormlyFieldToggle } from './toggle/toggle.type';
+import { addonsExtension } from './wrapper/addons.extension';
+import { FormlyWrapperAddons } from './wrapper/addons.wrapper';
 
 export enum X_FORMLY_TYPES {
   AUTOCOMPLETE = 'autocomplete',
@@ -20,16 +23,19 @@ export enum X_FORMLY_TYPES {
   INPUT = 'input',
   MULTI_CHECKBOX = 'multicheckbox',
   NATIVE_SELECT = 'native-select',
+  PASSWORD = 'password',
   RADIO = 'radio',
-  SLIDER = 'slider',
   SELECT = 'select',
+  SLIDER = 'slider',
   TEXTAREA = 'textarea',
   TOGGLE = 'toggle',
 }
 
 export enum X_FORMLY_WRAPPERS {
   FORM_FIELD = 'form-field',
+  ADDONS = 'addons',
 }
+
 export const xFormlyConfig: ConfigOption = {
   types: [
     {
@@ -87,12 +93,19 @@ export const xFormlyConfig: ConfigOption = {
       component: FormlyFieldSelect,
       wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
     },
+    {
+      name: X_FORMLY_TYPES.PASSWORD,
+      component: FormlyFieldPassword,
+      wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
+    },
   ],
   wrappers: [
     {
       name: X_FORMLY_WRAPPERS.FORM_FIELD,
       component: FormlyWrapperFormField,
     },
+    { name: X_FORMLY_WRAPPERS.ADDONS, component: FormlyWrapperAddons },
   ],
   validationMessages: [],
+  extensions: [{ name: X_FORMLY_WRAPPERS.ADDONS, extension: { onPopulate: addonsExtension } }],
 };
