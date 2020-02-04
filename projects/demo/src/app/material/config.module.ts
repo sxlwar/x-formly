@@ -1,8 +1,9 @@
+import { XFormlyModule } from 'x-formly';
+
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FormlyModule } from '@ngx-formly/core';
-import { XFormlyModule } from 'x-formly';
 
 import { ExamplesRouterViewerComponent, SharedModule } from '../shared';
 import { AutocompleteAppComponent } from './autocomplete';
@@ -11,6 +12,7 @@ import { DatepickerAppComponent, DatepickerExampleConfig } from './datepicker';
 import { debugFields } from './debug-fields';
 import { InputAppComponent, InputExampleConfig } from './input';
 import { NativeSelectAppComponent, NativeSelectExampleConfig } from './native-select';
+import { PasswordAppComponent, PasswordExampleConfig } from './password';
 import { RadioAppComponent, RadioExampleConfig } from './radio';
 import { SelectAppComponent, SelectExampleConfig } from './select';
 import { SliderAppComponent, SliderExampleConfig } from './slider';
@@ -38,43 +40,46 @@ import { ToggleAppComponent, ToggleExampleConfig } from './toggle';
         data: {
           debugFields,
           examples: [
-            InputExampleConfig,
-            TextareaExampleConfig,
             CheckboxExampleConfig,
+            DatepickerExampleConfig,
+            InputExampleConfig,
+            NativeSelectExampleConfig,
+            PasswordExampleConfig,
             RadioExampleConfig,
             SelectExampleConfig,
-            NativeSelectExampleConfig,
-            DatepickerExampleConfig,
-            ToggleExampleConfig,
             SliderExampleConfig,
+            TextareaExampleConfig,
+            ToggleExampleConfig,
           ],
         },
       },
     ]),
   ],
   declarations: [
-    InputAppComponent,
-    TextareaAppComponent,
+    AutocompleteAppComponent,
     CheckboxAppComponent,
+    DatepickerAppComponent,
+    InputAppComponent,
+    NativeSelectAppComponent,
+    PasswordAppComponent,
     RadioAppComponent,
     SelectAppComponent,
-    NativeSelectAppComponent,
-    DatepickerAppComponent,
-    ToggleAppComponent,
     SliderAppComponent,
-    AutocompleteAppComponent,
+    TextareaAppComponent,
+    ToggleAppComponent,
   ],
   entryComponents: [
-    InputAppComponent,
-    TextareaAppComponent,
+    AutocompleteAppComponent,
     CheckboxAppComponent,
+    DatepickerAppComponent,
+    InputAppComponent,
+    NativeSelectAppComponent,
+    PasswordAppComponent,
     RadioAppComponent,
     SelectAppComponent,
-    NativeSelectAppComponent,
-    DatepickerAppComponent,
-    ToggleAppComponent,
     SliderAppComponent,
-    AutocompleteAppComponent,
+    TextareaAppComponent,
+    ToggleAppComponent,
   ],
 })
 export class ConfigModule {}

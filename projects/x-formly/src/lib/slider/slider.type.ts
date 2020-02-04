@@ -3,8 +3,6 @@ import { MatSlider } from '@angular/material/slider';
 
 import { FieldType } from '../form-field/field.type';
 
-
-
 @Component({
   selector: 'formly-field-mat-slider',
   template: `
@@ -14,12 +12,14 @@ import { FieldType } from '../form-field/field.type';
       [formControl]="formControl"
       [formlyAttributes]="field"
       [tabindex]="to.tabindex || 0"
-      [color]="to.color">
+      [color]="to.color"
+    >
     </mat-slider>
   `,
 })
 export class FormlyFieldSlider extends FieldType {
-  @ViewChild(MatSlider, {static: false}) slider!: MatSlider;
+  @ViewChild(MatSlider, { static: false }) slider!: MatSlider;
+
   defaultOptions = {
     templateOptions: {
       hideFieldUnderline: true,
@@ -29,6 +29,7 @@ export class FormlyFieldSlider extends FieldType {
 
   onContainerClick(event: MouseEvent): void {
     this.slider.focus();
+
     super.onContainerClick(event);
   }
 }

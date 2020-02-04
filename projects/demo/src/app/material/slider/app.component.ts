@@ -9,8 +9,11 @@ import { X_FORMLY_TYPES } from 'x-formly';
 })
 export class AppComponent {
   form = new FormGroup({});
+  // tslint:disable-next-line:no-any
   model: any = {};
+
   options: FormlyFormOptions = {};
+
   fields: FormlyFieldConfig[] = [
     {
       key: 'Slider',

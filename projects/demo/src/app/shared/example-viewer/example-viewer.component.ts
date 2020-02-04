@@ -18,6 +18,7 @@ export interface ExampleType {
   title: string;
   type?: string;
   description: string;
+  // tslint:disable-next-line:no-any
   component: any;
   debug: boolean;
   files: { file: string; filecontent: string; content: string }[];
@@ -37,15 +38,22 @@ export class ExampleViewerComponent implements OnInit, OnDestroy {
     }
   }
 
+  // tslint:disable-next-line
   _debugFields: any;
+
+  // tslint:disable-next-line
   _prevModel: any;
 
   @ViewChild('demo', { read: ViewContainerRef, static: true }) demoRef: ViewContainerRef;
+
   @ViewChild('modelPreview', { static: false }) modelPreviewRef: ElementRef;
+
+  // tslint:disable-next-line:no-any
   demoComponentRef: ComponentRef<any>;
 
   /** Whether the source for the example is being displayed. */
   showSource = false;
+
   showDebug = false;
 
   constructor(private copier: CopierService, private componentFactoryResolver: ComponentFactoryResolver) {}
@@ -54,7 +62,10 @@ export class ExampleViewerComponent implements OnInit, OnDestroy {
     const model = JSON.stringify(this.demoComponentRef.instance.model);
     if (this._prevModel !== model && this.modelPreviewRef && this.modelPreviewRef.nativeElement) {
       this._prevModel = model;
-      const formatter = new JSONFormatter(this.demoComponentRef.instance.model, 5, { hoverPreviewEnabled: true });
+      const expandLevel = 5;
+      const formatter = new JSONFormatter(this.demoComponentRef.instance.model, expandLevel, {
+        hoverPreviewEnabled: true,
+      });
       this.modelPreviewRef.nativeElement.innerHTML = '';
       this.modelPreviewRef.nativeElement.appendChild(formatter.render());
     }
@@ -81,7 +92,8 @@ export class ExampleViewerComponent implements OnInit, OnDestroy {
     this.showSource = !this.showSource;
   }
 
-  copySource(content) {
+  // tslint:disable-next-line:no-any
+  copySource(content: any): void {
     this.copier.copyText(content.innerText);
   }
 

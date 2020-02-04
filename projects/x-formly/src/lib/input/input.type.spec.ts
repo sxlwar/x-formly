@@ -8,7 +8,6 @@ import { FormlyFieldConfig, FormlyFormOptions, FormlyModule } from '@ngx-formly/
 
 import { FormlyFieldInput } from './input.type';
 
-
 @Component({
   selector: 'formly-test',
   template: `
@@ -18,6 +17,7 @@ import { FormlyFieldInput } from './input.type';
 class FormlyTestComponent {
   form = new FormGroup({});
   fields: FormlyFieldConfig[];
+  // tslint:disable-next-line:no-any
   model: any;
   options: FormlyFormOptions;
 }

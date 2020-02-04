@@ -8,14 +8,14 @@ import { FieldType } from '../form-field/field.type';
   template: `
     <ng-template #selectAll let-selectOptions="selectOptions">
       <mat-option (click)="toggleSelectAll(selectOptions)">
-        <mat-pseudo-checkbox class="mat-option-pseudo-checkbox"
-          [state]="getSelectAllState(selectOptions)">
+        <mat-pseudo-checkbox class="mat-option-pseudo-checkbox" [state]="getSelectAllState(selectOptions)">
         </mat-pseudo-checkbox>
         {{ to.selectAllOption }}
       </mat-option>
     </ng-template>
 
-    <mat-select [id]="id"
+    <mat-select
+      [id]="id"
       [formControl]="formControl"
       [formlyAttributes]="field"
       [placeholder]="to.placeholder"
@@ -26,9 +26,13 @@ import { FieldType } from '../form-field/field.type';
       [errorStateMatcher]="errorStateMatcher"
       [aria-labelledby]="_getAriaLabelledby()"
       [disableOptionCentering]="to.disableOptionCentering"
-      >
-      <ng-container *ngIf="to.options | formlySelectOptions:field | async as selectOptions">
-        <ng-container *ngIf="to.multiple && to.selectAllOption" [ngTemplateOutlet]="selectAll" [ngTemplateOutletContext]="{ selectOptions: selectOptions }">
+    >
+      <ng-container *ngIf="to.options | formlySelectOptions: field | async as selectOptions">
+        <ng-container
+          *ngIf="to.multiple && to.selectAllOption"
+          [ngTemplateOutlet]="selectAll"
+          [ngTemplateOutletContext]="{ selectOptions: selectOptions }"
+        >
         </ng-container>
         <ng-container *ngFor="let item of selectOptions">
           <mat-optgroup *ngIf="item.group" [label]="item.label">
@@ -43,32 +47,28 @@ import { FieldType } from '../form-field/field.type';
   `,
 })
 export class FormlyFieldSelect extends FieldType {
-  @ViewChild(MatSelect, <any> { static: true }) formFieldControl!: MatSelect;
+  @ViewChild(MatSelect, { static: true }) formFieldControl!: MatSelect;
 
   defaultOptions = {
     templateOptions: { options: [] },
   };
 
-  private selectAllValue!: { options: any, value: any[] };
+  // tslint:disable-next-line:no-any
+  private selectAllValue!: { options: any; value: any[] };
 
+  // tslint:disable-next-line:no-any
   getSelectAllState(options: any[]) {
     if (this.empty || this.value.length === 0) {
       return '';
     }
 
-
-    return this.value.length !== this.getSelectAllValue(options).length
-      ? 'indeterminate'
-      : 'checked';
+    return this.value.length !== this.getSelectAllValue(options).length ? 'indeterminate' : 'checked';
   }
 
+  // tslint:disable-next-line:no-any
   toggleSelectAll(options: any[]) {
     const selectAllValue = this.getSelectAllValue(options);
-    this.formControl.setValue(
-      !this.value || this.value.length !== selectAllValue.length
-        ? selectAllValue
-        : [],
-    );
+    this.formControl.setValue(!this.value || this.value.length !== selectAllValue.length ? selectAllValue : []);
   }
 
   change($event: MatSelectChange) {
@@ -77,7 +77,8 @@ export class FormlyFieldSelect extends FieldType {
     }
   }
 
-  compareWith(o1: any, o2: any) {
+  // tslint:disable-next-line:no-any
+  compareWith(o1: any, o2: any): boolean {
     return o1 === o2;
   }
 
@@ -93,20 +94,19 @@ export class FormlyFieldSelect extends FieldType {
     return null;
   }
 
+  // tslint:disable-next-line:no-any
   private getSelectAllValue(options: any[]) {
     if (!this.selectAllValue || options !== this.selectAllValue.options) {
+      // tslint:disable-next-line:no-any
       const flatOptions: any[] = [];
-      options.forEach(o => o.group
-        ? flatOptions.push(...o.group)
-        : flatOptions.push(o),
-      );
+
+      options.forEach(o => (o.group ? flatOptions.push(...o.group) : flatOptions.push(o)));
 
       this.selectAllValue = {
         options,
         value: flatOptions.map(o => o.value),
       };
     }
-
 
     return this.selectAllValue.value;
   }

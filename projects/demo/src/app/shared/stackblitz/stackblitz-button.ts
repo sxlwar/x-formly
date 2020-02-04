@@ -1,9 +1,10 @@
 import { Component, Input, NgModule } from '@angular/core';
-import { StackblitzWriter } from './stackblitz-writer';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
 import { ExampleType } from '../example-viewer/example-viewer.component';
+import { StackblitzWriter } from './stackblitz-writer';
 
 @Component({
   selector: 'formly-stackblitz-button',

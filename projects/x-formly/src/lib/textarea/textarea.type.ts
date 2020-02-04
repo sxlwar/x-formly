@@ -3,13 +3,11 @@ import { MAT_INPUT_VALUE_ACCESSOR, MatInput } from '@angular/material/input';
 
 import { FieldType } from '../form-field/field.type';
 
-
-
-
 @Component({
   selector: 'formly-field-mat-textarea',
   template: `
-    <textarea matInput
+    <textarea
+      matInput
       [id]="id"
       [readonly]="to.readonly"
       [formControl]="formControl"
@@ -22,7 +20,8 @@ import { FieldType } from '../form-field/field.type';
       [readonly]="to.readonly"
       [cdkTextareaAutosize]="to.autosize"
       [cdkAutosizeMinRows]="to.autosizeMinRows"
-      [cdkAutosizeMaxRows]="to.autosizeMaxRows">
+      [cdkAutosizeMaxRows]="to.autosizeMaxRows"
+    >
     </textarea>
   `,
   providers: [
@@ -32,7 +31,8 @@ import { FieldType } from '../form-field/field.type';
   ],
 })
 export class FormlyFieldTextArea extends FieldType implements OnInit {
-  @ViewChild(MatInput, <any> { static: true }) formFieldControl!: MatInput;
+  @ViewChild(MatInput, { static: true }) formFieldControl!: MatInput;
+
   defaultOptions = {
     templateOptions: {
       cols: 1,

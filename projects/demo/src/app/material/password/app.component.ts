@@ -17,18 +17,14 @@ export class AppComponent {
 
   fields: FormlyFieldConfig[] = [
     {
-      key: 'Checkbox',
-      type: X_FORMLY_TYPES.CHECKBOX,
+      key: 'Password',
+      type: X_FORMLY_TYPES.PASSWORD,
       templateOptions: {
-        label: 'Accept terms',
-        description: 'In order to proceed, please accept terms',
-        pattern: 'true',
+        label: 'Password',
+        placeholder: 'Please input your password',
+        description: 'Password description',
         required: true,
-      },
-      validation: {
-        messages: {
-          pattern: 'Please accept the terms',
-        },
+        appearance: 'outline',
       },
     },
   ];

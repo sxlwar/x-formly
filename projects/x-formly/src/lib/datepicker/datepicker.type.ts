@@ -5,12 +5,11 @@ import { ɵdefineHiddenProp as defineHiddenProp } from '@ngx-formly/core';
 
 import { FieldType } from '../form-field/field.type';
 
-
-
 @Component({
   selector: 'formly-field-mat-datepicker',
   template: `
-    <input matInput
+    <input
+      matInput
       [id]="id"
       [errorStateMatcher]="errorStateMatcher"
       [formControl]="formControl"
@@ -21,22 +20,29 @@ import { FieldType } from '../form-field/field.type';
       [formlyAttributes]="field"
       [placeholder]="to.placeholder"
       [tabindex]="to.tabindex || 0"
-      [readonly]="to.readonly">
+      [readonly]="to.readonly"
+    />
     <ng-template #datepickerToggle>
       <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
     </ng-template>
-    <mat-datepicker #picker
+    <mat-datepicker
+      #picker
       [color]="to.color"
       [touchUi]="to.datepickerOptions.touchUi"
       [startView]="to.datepickerOptions.startView"
-      [startAt]="to.datepickerOptions.startAt">
+      [startAt]="to.datepickerOptions.startAt"
+    >
     </mat-datepicker>
   `,
 })
 export class FormlyFieldDatepicker extends FieldType implements AfterViewInit {
-  @ViewChild(MatInput, <any> { static: true }) formFieldControl!: MatInput;
-  @ViewChild(MatDatepickerInput, {static: false}) datepickerInput!: MatDatepickerInput<any>;
-  @ViewChild('datepickerToggle', {static: false}) datepickerToggle!: TemplateRef<any>;
+  @ViewChild(MatInput, { static: true }) formFieldControl!: MatInput;
+
+  // tslint:disable-next-line:no-any
+  @ViewChild(MatDatepickerInput, { static: false }) datepickerInput!: MatDatepickerInput<any>;
+
+  // tslint:disable-next-line:no-any
+  @ViewChild('datepickerToggle', { static: false }) datepickerToggle!: TemplateRef<any>;
 
   defaultOptions = {
     templateOptions: {
@@ -50,11 +56,14 @@ export class FormlyFieldDatepicker extends FieldType implements AfterViewInit {
   ngAfterViewInit() {
     super.ngAfterViewInit();
     // temporary fix for https://github.com/angular/material2/issues/6728
-    (<any> this.datepickerInput)._formField = this.formField;
+    // tslint:disable-next-line
+    (<any>this.datepickerInput)._formField = this.formField;
 
     setTimeout(() => {
       defineHiddenProp(this.field, '_mat' + this.to.datepickerOptions.datepickerTogglePosition, this.datepickerToggle);
-      (<any> this.options)._markForCheck(this.field);
+
+      // tslint:disable-next-line
+      (<any>this.options)._markForCheck(this.field);
     });
   }
 }

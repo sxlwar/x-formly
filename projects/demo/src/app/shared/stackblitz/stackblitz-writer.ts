@@ -4,8 +4,6 @@ import { ExampleType } from '../example-viewer/example-viewer.component';
 
 const STACKBLITZ_URL = 'https://run.stackblitz.com/api/angular/v1';
 
-const COPYRIGHT = '';
-
 const TEMPLATE_FILES = {
   core: [
     { file: 'polyfills.ts', filecontent: require('!!raw-loader!@assets/stackblitz/polyfills.ts') },
@@ -76,10 +74,9 @@ export class StackblitzWriter {
     this._appendFormInput(form, 'private', 'true');
     this._appendFormInput(form, 'description', exampleData.title);
 
-    const appModuleContent = exampleData.files.find(f => f.file === 'app.module.ts').filecontent;
-    const componentName = exampleData.type;
-
-    const options: any = { type, name: componentName };
+    const compName = exampleData.type;
+    // tslint:disable-next-line:no-any
+    const options: any = { type, name: compName };
 
     options.includeMaterial = true;
     options.useAnimation = true;
@@ -100,7 +97,7 @@ export class StackblitzWriter {
         form,
         this._replaceExamplePlaceholderNames(data.file, data.filecontent, options),
         data.file,
-        false,
+        false
       );
     });
 
@@ -109,7 +106,7 @@ export class StackblitzWriter {
         form,
         this._replaceExamplePlaceholderNames(data.file, data.filecontent, options),
         data.file,
-        data.file.indexOf('assets') !== 0,
+        data.file.indexOf('assets') !== 0
       );
     });
 
@@ -160,7 +157,7 @@ export class StackblitzWriter {
     if (fileName === 'app.module.ts') {
       filecontent = filecontent.replace(
         `/*import*/`,
-        isDatepicker ? `${importDateStatement}\n${importStatement}` : importStatement,
+        isDatepicker ? `${importDateStatement}\n${importStatement}` : importStatement
       );
       filecontent = filecontent.replace(`/*declarations*/`, componentName);
       filecontent = filecontent.replace(`/*entryComponents*/`, componentName);
