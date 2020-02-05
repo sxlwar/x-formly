@@ -1,4 +1,4 @@
-import { XMaterialModule } from 'x-material';
+import { XMatModule } from 'x-material';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -51,7 +51,7 @@ import { xFormlyConfig } from './x-formly.config';
     MatSlideToggleModule,
     MatSliderModule,
     ReactiveFormsModule,
-    XMaterialModule,
+    XMatModule,
   ],
   declarations: [
     FormlyFieldAutoComplete,

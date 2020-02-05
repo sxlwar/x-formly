@@ -1,4 +1,5 @@
 import { XFormlyModule } from 'x-formly';
+import { XMatModule } from 'x-material';
 
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,6 +34,7 @@ import { ToggleAppComponent, ToggleExampleConfig } from './toggle';
       ],
     }),
     XFormlyModule,
+    XMatModule,
     RouterModule.forChild([
       {
         path: '',
