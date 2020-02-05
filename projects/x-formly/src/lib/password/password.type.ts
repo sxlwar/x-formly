@@ -26,28 +26,24 @@ export class FormlyFieldPassword extends FieldType {
   isHide = true;
 
   /**
-   * handle click event;
+   * onClick: handle click event;
    * We need to trigger change detection manually since mutable object here.
    */
-  onClick: (to: FormlyTemplateOptions) => void;
-
   defaultOptions = {
     templateOptions: {
       addonRight: {
         icon: this.icon,
-        onClick: this.onClick,
+        onClick: (to: FormlyTemplateOptions): void => {
+          this.isHide = !this.isHide;
+          to.addonRight.icon = this.icon;
+          this.cdf.detectChanges();
+        },
       },
     },
   };
 
   constructor(private cdf: ChangeDetectorRef) {
     super();
-
-    this.onClick = (to: FormlyTemplateOptions): void => {
-      this.isHide = !this.isHide;
-      to.addonRight.icon = this.icon;
-      this.cdf.detectChanges();
-    };
   }
 
   /**
