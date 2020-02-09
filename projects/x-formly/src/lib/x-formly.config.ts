@@ -13,6 +13,7 @@ import { FormlyFieldSelect } from './select/select.type';
 import { FormlyFieldSlider } from './slider/slider.type';
 import { FormlyFieldTextArea } from './textarea/textarea.type';
 import { FormlyFieldToggle } from './toggle/toggle.type';
+import { FormlyFieldVerificationCode } from './verification-code/verification-code.type';
 import { addonsExtension } from './wrapper/addons.extension';
 import { FormlyWrapperAddons } from './wrapper/addons.wrapper';
 
@@ -29,6 +30,7 @@ export enum X_FORMLY_TYPES {
   SLIDER = 'slider',
   TEXTAREA = 'textarea',
   TOGGLE = 'toggle',
+  VERIFICATION_CODE = 'verification-code',
 }
 
 export enum X_FORMLY_WRAPPERS {
@@ -96,6 +98,11 @@ export const xFormlyConfig: ConfigOption = {
     {
       name: X_FORMLY_TYPES.PASSWORD,
       component: FormlyFieldPassword,
+      wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
+    },
+    {
+      name: X_FORMLY_TYPES.VERIFICATION_CODE,
+      component: FormlyFieldVerificationCode,
       wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
     },
   ],
