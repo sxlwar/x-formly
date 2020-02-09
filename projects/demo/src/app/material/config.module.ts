@@ -19,6 +19,7 @@ import { SelectAppComponent, SelectExampleConfig } from './select';
 import { SliderAppComponent, SliderExampleConfig } from './slider';
 import { TextareaAppComponent, TextareaExampleConfig } from './textarea';
 import { ToggleAppComponent, ToggleExampleConfig } from './toggle';
+import { VerificationCodeAppComponent, VerificationCodeExampleConfig } from './verification-code';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import { ToggleAppComponent, ToggleExampleConfig } from './toggle';
             SliderExampleConfig,
             TextareaExampleConfig,
             ToggleExampleConfig,
+            VerificationCodeExampleConfig,
           ],
         },
       },
@@ -69,6 +71,7 @@ import { ToggleAppComponent, ToggleExampleConfig } from './toggle';
     SliderAppComponent,
     TextareaAppComponent,
     ToggleAppComponent,
+    VerificationCodeAppComponent,
   ],
   entryComponents: [
     AutocompleteAppComponent,
@@ -82,6 +85,7 @@ import { ToggleAppComponent, ToggleExampleConfig } from './toggle';
     SliderAppComponent,
     TextareaAppComponent,
     ToggleAppComponent,
+    VerificationCodeAppComponent,
   ],
 })
 export class ConfigModule {}

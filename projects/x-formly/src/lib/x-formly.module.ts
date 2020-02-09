@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -30,6 +31,7 @@ import { FormlyFieldSelect } from './select/select.type';
 import { FormlyFieldSlider } from './slider/slider.type';
 import { FormlyFieldTextArea } from './textarea/textarea.type';
 import { FormlyFieldToggle } from './toggle/toggle.type';
+import { FormlyFieldVerificationCode } from './verification-code/verification-code.type';
 import { FormlyWrapperAddons } from './wrapper/addons.wrapper';
 import { xFormlyConfig } from './x-formly.config';
 
@@ -40,6 +42,7 @@ import { xFormlyConfig } from './x-formly.config';
     FormlySelectModule,
     MatAutocompleteModule,
     MatAutocompleteModule,
+    MatButtonModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -66,6 +69,7 @@ import { xFormlyConfig } from './x-formly.config';
     FormlyFieldTextArea,
     FormlyFieldToggle,
     FormlyFieldPassword,
+    FormlyFieldVerificationCode,
     FormlyWrapperFormField,
     FormlyWrapperAddons,
   ],
