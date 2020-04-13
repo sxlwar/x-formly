@@ -1,7 +1,8 @@
+import { X_FORMLY_TYPES } from 'x-formly';
+
 import { Component } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
-import { X_FORMLY_TYPES } from 'x-formly';
 
 @Component({
   selector: 'formly-app-example',
@@ -24,6 +25,7 @@ export class AppComponent {
         placeholder: 'Placeholder',
         description: 'Description',
         required: true,
+        appearance: 'outline',
       },
     },
   ];

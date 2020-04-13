@@ -1,4 +1,4 @@
-import { XMatModule } from 'x-material';
+import { XMatDatePickerModule, XMatPasswordModule } from 'x-material';
 
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -20,10 +20,10 @@ import { FormlySelectModule } from '@ngx-formly/core/select';
 
 import { FormlyFieldAutoComplete } from './autocomplete/autocomplete.type';
 import { FormlyFieldCheckbox } from './checkbox/checkbox.type';
-import { FormlyFieldDatepicker } from './datepicker/datepicker.type';
+import { FormlyFieldDatePicker } from './date-picker/date-picker.type';
 import { FormlyWrapperFormField } from './form-field/form-field.wrapper';
 import { FormlyFieldInput } from './input/input.type';
-import { FormlyFieldMultiCheckbox } from './multicheckbox/multicheckbox.type';
+import { FormlyFieldMultiCheckbox } from './multi-checkbox/multi-checkbox.type';
 import { FormlyFieldNativeSelect } from './native-select/native-select.type';
 import { FormlyFieldPassword } from './password/password.type';
 import { FormlyFieldRadio } from './radio/radio.type';
@@ -54,24 +54,25 @@ import { xFormlyConfig } from './x-formly.config';
     MatSlideToggleModule,
     MatSliderModule,
     ReactiveFormsModule,
-    XMatModule,
+    XMatPasswordModule,
+    XMatDatePickerModule,
   ],
   declarations: [
     FormlyFieldAutoComplete,
     FormlyFieldCheckbox,
-    FormlyFieldDatepicker,
+    FormlyFieldDatePicker,
     FormlyFieldInput,
     FormlyFieldMultiCheckbox,
     FormlyFieldNativeSelect,
+    FormlyFieldPassword,
     FormlyFieldRadio,
     FormlyFieldSelect,
     FormlyFieldSlider,
     FormlyFieldTextArea,
     FormlyFieldToggle,
-    FormlyFieldPassword,
     FormlyFieldVerificationCode,
-    FormlyWrapperFormField,
     FormlyWrapperAddons,
+    FormlyWrapperFormField,
   ],
 })
 export class XFormlyModule {}

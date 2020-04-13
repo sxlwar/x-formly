@@ -19,7 +19,7 @@ import { FieldType } from '../form-field/field.type';
       [placeholder]="to.placeholder"
       type="text"
     />
-    <button mat-stroked-button [disabled]="isTiming | async" [color]="to.color" (click)="onClick()">
+    <button mat-stroked-button [disabled]="isTiming | async" [color]="to.color" (click)="onClick($event)">
       {{ text | async }}
     </button>
   `,
