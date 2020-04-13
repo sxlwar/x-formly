@@ -2,10 +2,10 @@ import { ConfigOption } from '@ngx-formly/core';
 
 import { FormlyFieldAutoComplete } from './autocomplete/autocomplete.type';
 import { FormlyFieldCheckbox } from './checkbox/checkbox.type';
-import { FormlyFieldDatepicker } from './datepicker/datepicker.type';
+import { FormlyFieldDatePicker } from './date-picker/date-picker.type';
 import { FormlyWrapperFormField } from './form-field/form-field.wrapper';
 import { FormlyFieldInput } from './input/input.type';
-import { FormlyFieldMultiCheckbox } from './multicheckbox/multicheckbox.type';
+import { FormlyFieldMultiCheckbox } from './multi-checkbox/multi-checkbox.type';
 import { FormlyFieldNativeSelect } from './native-select/native-select.type';
 import { FormlyFieldPassword } from './password/password.type';
 import { FormlyFieldRadio } from './radio/radio.type';
@@ -20,9 +20,9 @@ import { FormlyWrapperAddons } from './wrapper/addons.wrapper';
 export enum X_FORMLY_TYPES {
   AUTOCOMPLETE = 'autocomplete',
   CHECKBOX = 'checkbox',
-  DATEPICKER = 'datepicker',
+  DATE_PICKER = 'date-picker',
   INPUT = 'input',
-  MULTI_CHECKBOX = 'multicheckbox',
+  MULTI_CHECKBOX = 'multi-checkbox',
   NATIVE_SELECT = 'native-select',
   PASSWORD = 'password',
   RADIO = 'radio',
@@ -51,8 +51,8 @@ export const xFormlyConfig: ConfigOption = {
       wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
     },
     {
-      name: X_FORMLY_TYPES.DATEPICKER,
-      component: FormlyFieldDatepicker,
+      name: X_FORMLY_TYPES.DATE_PICKER,
+      component: FormlyFieldDatePicker,
       wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
     },
     {

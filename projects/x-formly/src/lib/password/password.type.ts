@@ -28,6 +28,8 @@ export class FormlyFieldPassword extends FieldType {
   /**
    * onClick: handle click event;
    * We need to trigger change detection manually since mutable object here.
+   * !FIXME: error below when @ngx-formly/core version > 5.5.10
+   * ERROR TypeError: Cannot read property 'id' of undefined
    */
   defaultOptions = {
     templateOptions: {
