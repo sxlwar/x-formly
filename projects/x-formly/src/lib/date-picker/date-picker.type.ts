@@ -213,14 +213,11 @@ export class FormlyFieldDatePicker extends FieldType implements OnInit {
   }
 
   /**
-   * If user remove value directly, DOM Event passed in;
-   * !FIXME: formControl value will be update to  { startDate: null, endDate: null }
-   * !even obviously pass null to the setValue method;
-   * like this: this.formControl.setValue(null);
+   * @description clear value if value of the input is empty
    */
   change(value: DateRange | Event) {
     if (value instanceof Event) {
-      this.formControl.setValue({ startDate: moment(), endDate: moment() });
+      this.pickerDirective.picker.clear();
     }
   }
 }

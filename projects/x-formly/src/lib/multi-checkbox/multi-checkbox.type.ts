@@ -3,6 +3,9 @@ import { MatCheckbox } from '@angular/material/checkbox';
 
 import { FieldType } from '../form-field/field.type';
 
+/**
+ * TODO: add to demo
+ */
 @Component({
   selector: 'formly-field-mat-multicheckbox',
   template: `

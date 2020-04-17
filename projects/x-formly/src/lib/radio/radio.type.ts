@@ -18,6 +18,13 @@ import { FieldType } from '../form-field/field.type';
       </mat-radio-button>
     </mat-radio-group>
   `,
+  styles: [
+    `
+      :host::ng-deep .mat-radio-group:focus {
+        outline: none;
+      }
+    `,
+  ],
 })
 export class FormlyFieldRadio extends FieldType {
   @ViewChild(MatRadioGroup, { static: false }) radioGroup!: MatRadioGroup;

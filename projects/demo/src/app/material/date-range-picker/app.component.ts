@@ -12,7 +12,7 @@ const locale: LocaleConfig = {
   daysOfWeek: ['一', '二', '三', '四', '五', '六', '日'],
   monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
   firstDay: 7,
-  displayFormat: 'YYYY-MM-DD hh:mm:ss',
+  displayFormat: 'YYYY-MM-DD',
 };
 
 @Component({
@@ -47,7 +47,6 @@ export class AppComponent {
           showDropdown: true,
           lockStartDate: false,
           customRangeDirection: false,
-          format: 'YYYY-MM-DD',
           locale,
           ranges: true,
           timePicker: true,
