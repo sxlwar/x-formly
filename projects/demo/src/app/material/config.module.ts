@@ -16,8 +16,10 @@ import { InputAppComponent, InputExampleConfig } from './input';
 import { NativeSelectAppComponent, NativeSelectExampleConfig } from './native-select';
 import { PasswordAppComponent, PasswordExampleConfig } from './password';
 import { RadioAppComponent, RadioExampleConfig } from './radio';
+import { RepeatAppComponent, RepeatExampleConfig } from './repeat';
 import { SelectAppComponent, SelectExampleConfig } from './select';
 import { SliderAppComponent, SliderExampleConfig } from './slider';
+import { StatementGroupAppComponent, StatementGroupExampleConfig } from './statement-group';
 import { TextareaAppComponent, TextareaExampleConfig } from './textarea';
 import { ToggleAppComponent, ToggleExampleConfig } from './toggle';
 import { VerificationCodeAppComponent, VerificationCodeExampleConfig } from './verification-code';
@@ -33,10 +35,12 @@ const configs: Type<any>[] = [
   PasswordAppComponent,
   RadioAppComponent,
   SelectAppComponent,
+  StatementGroupAppComponent,
   SliderAppComponent,
   TextareaAppComponent,
   ToggleAppComponent,
   VerificationCodeAppComponent,
+  RepeatAppComponent,
 ];
 
 @NgModule({
@@ -78,6 +82,8 @@ const configs: Type<any>[] = [
             TextareaExampleConfig,
             ToggleExampleConfig,
             VerificationCodeExampleConfig,
+            StatementGroupExampleConfig,
+            RepeatExampleConfig,
           ],
         },
       },

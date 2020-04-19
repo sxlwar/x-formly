@@ -9,6 +9,7 @@ import { FormlyFieldMultiCheckbox } from './multi-checkbox/multi-checkbox.type';
 import { FormlyFieldNativeSelect } from './native-select/native-select.type';
 import { FormlyFieldPassword } from './password/password.type';
 import { FormlyFieldRadio } from './radio/radio.type';
+import { FormlyFieldRepeat } from './repeat/repeat.type';
 import { FormlyFieldSelect } from './select/select.type';
 import { FormlyFieldSlider } from './slider/slider.type';
 import { FormlyFieldTextArea } from './textarea/textarea.type';
@@ -16,6 +17,7 @@ import { FormlyFieldToggle } from './toggle/toggle.type';
 import { FormlyFieldVerificationCode } from './verification-code/verification-code.type';
 import { addonsExtension } from './wrapper/addons.extension';
 import { FormlyWrapperAddons } from './wrapper/addons.wrapper';
+import { FormlyWrapperStatementGroup } from './wrapper/statement-group.wrapper';
 
 export enum X_FORMLY_TYPES {
   AUTOCOMPLETE = 'autocomplete',
@@ -31,11 +33,13 @@ export enum X_FORMLY_TYPES {
   TEXTAREA = 'textarea',
   TOGGLE = 'toggle',
   VERIFICATION_CODE = 'verification-code',
+  REPEAT = 'repeat',
 }
 
 export enum X_FORMLY_WRAPPERS {
-  FORM_FIELD = 'form-field',
   ADDONS = 'addons',
+  FORM_FIELD = 'form-field',
+  STATEMENT_GROUP = 'statement_group',
 }
 
 export const xFormlyConfig: ConfigOption = {
@@ -105,6 +109,10 @@ export const xFormlyConfig: ConfigOption = {
       component: FormlyFieldVerificationCode,
       wrappers: [X_FORMLY_WRAPPERS.FORM_FIELD],
     },
+    {
+      name: X_FORMLY_TYPES.REPEAT,
+      component: FormlyFieldRepeat,
+    },
   ],
   wrappers: [
     {
@@ -112,6 +120,7 @@ export const xFormlyConfig: ConfigOption = {
       component: FormlyWrapperFormField,
     },
     { name: X_FORMLY_WRAPPERS.ADDONS, component: FormlyWrapperAddons },
+    { name: X_FORMLY_WRAPPERS.STATEMENT_GROUP, component: FormlyWrapperStatementGroup },
   ],
   validationMessages: [],
   extensions: [{ name: X_FORMLY_WRAPPERS.ADDONS, extension: { onPopulate: addonsExtension } }],

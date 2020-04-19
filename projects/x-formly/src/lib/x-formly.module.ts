@@ -27,12 +27,14 @@ import { FormlyFieldMultiCheckbox } from './multi-checkbox/multi-checkbox.type';
 import { FormlyFieldNativeSelect } from './native-select/native-select.type';
 import { FormlyFieldPassword } from './password/password.type';
 import { FormlyFieldRadio } from './radio/radio.type';
+import { FormlyFieldRepeat } from './repeat/repeat.type';
 import { FormlyFieldSelect } from './select/select.type';
 import { FormlyFieldSlider } from './slider/slider.type';
 import { FormlyFieldTextArea } from './textarea/textarea.type';
 import { FormlyFieldToggle } from './toggle/toggle.type';
 import { FormlyFieldVerificationCode } from './verification-code/verification-code.type';
 import { FormlyWrapperAddons } from './wrapper/addons.wrapper';
+import { FormlyWrapperStatementGroup } from './wrapper/statement-group.wrapper';
 import { xFormlyConfig } from './x-formly.config';
 
 @NgModule({
@@ -73,6 +75,8 @@ import { xFormlyConfig } from './x-formly.config';
     FormlyFieldVerificationCode,
     FormlyWrapperAddons,
     FormlyWrapperFormField,
+    FormlyWrapperStatementGroup,
+    FormlyFieldRepeat,
   ],
 })
 export class XFormlyModule {}
