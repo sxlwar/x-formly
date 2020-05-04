@@ -5,7 +5,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { FieldType } from '../form-field/field.type';
 
-interface DateRange {
+export interface DateRange {
   startDate: Moment;
   endDate: Moment;
 }

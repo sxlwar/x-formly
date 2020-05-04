@@ -12,7 +12,13 @@ export class AppComponent {
   form = new FormGroup({});
 
   model = {
-    investments: [{}],
+    investments: [
+      { start: 9, end: 10, fee: 0.5 },
+      { start: 11, end: 20, fee: 0.4 },
+      { start: 21, end: 30, fee: 0.3 },
+      { start: 31, end: 40, fee: 0.2 },
+      { start: 41, end: 50, fee: 0.1 },
+    ],
   };
 
   options: FormlyFormOptions = {};

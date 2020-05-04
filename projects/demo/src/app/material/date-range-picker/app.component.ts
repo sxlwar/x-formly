@@ -54,6 +54,7 @@ export class AppComponent {
           timePickerIncrement: 15,
           timePicker24Hour: true,
           positionX: 'left',
+          showClearButton: true,
         },
       },
     },

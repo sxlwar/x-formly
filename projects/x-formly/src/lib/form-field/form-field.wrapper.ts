@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs';
+
 import { FocusMonitor } from '@angular/cdk/a11y';
 import {
   AfterContentChecked,
@@ -13,7 +15,6 @@ import {
 } from '@angular/core';
 import { MatFormField, MatFormFieldControl } from '@angular/material/form-field';
 import { FieldWrapper, FormlyFieldConfig, ɵdefineHiddenProp as defineHiddenProp } from '@ngx-formly/core';
-import { Subject } from 'rxjs';
 
 import { FieldType } from './field.type';
 
@@ -187,7 +188,16 @@ export class FormlyWrapperFormField extends FieldWrapper<MatFormlyFieldConfig>
   }
 
   get empty() {
-    return !this.formControl.value;
+    const { type } = this.field;
+    const value = this.formControl.value;
+
+    // data picker always set the result as { [key: string]: any } structure
+    // we need to treat the result { [key: string]: null } as an empty result
+    if (type === 'date-picker') {
+      return value instanceof Object ? Object.values(value).every(v => v === null) : !value;
+    }
+
+    return !value;
   }
 
   get shouldLabelFloat() {

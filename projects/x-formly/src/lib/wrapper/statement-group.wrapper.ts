@@ -29,11 +29,13 @@ export class FormlyWrapperStatementGroup extends FieldWrapper implements OnInit 
   list: { label: string; field: FormlyFieldConfig }[] = [];
 
   ngOnInit() {
-    const labelsReg = /\{{2}[\d\w]{1,}\}{2}/;
-    const keysReg = /(?<=\{{2})([\d\w]{1,})(?=\}{2})/g;
+    const labelsReg = /\{{2}[\d\w\s]{1,}\}{2}/;
+    // The RegExp commented below works in Chrome but not in other browsers;
+    // const keysReg = /(?<=\{{2})([\d\w]{1,})(?=\}{2})/g;
+    const keysReg = /{{\s*[\w\.]+\s*}}/g;
     const statement = this.to.statement;
     const labels: string[] = statement.split(labelsReg);
-    const keys: string[] = statement.match(keysReg);
+    const keys: string[] = statement.match(keysReg).map((str: string) => str.match(/[\w\.]+/)[0]);
 
     this.list = labels.map((label: string, index: number) => {
       const field = this.field.fieldGroup.find(item => item.key === keys[index]);
